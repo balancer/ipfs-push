@@ -32,18 +32,26 @@ const query = {
 
 async function updatePoolsInterval() {
   // Publish for homestead
-  console.log('Subgraph request');
-  const pools = await subgraphRequest(subgraphUrl, query);
-  console.log('Pin on IPFS', pools.pools.length);
-  const hash = await ipfsPin(key, pools);
-  console.log('Pinned at', hash);
+  try {
+    console.log('Subgraph request');
+    const pools = await subgraphRequest(subgraphUrl, query);
+    console.log('Pin on IPFS', pools.pools.length);
+    const hash = await ipfsPin(key, pools);
+    console.log('Pinned at', hash);
+  } catch (e) {
+    console.error('Update failed', e);
+  }
 
   // Publish for kovan
-  console.log('[Kovan] Subgraph request');
-  const poolsKovan = await subgraphRequest(subgraphUrlKovan, query);
-  console.log('[Kovan] Pin on IPFS', poolsKovan.pools.length);
-  const hashKovan = await ipfsPin(keyKovan, poolsKovan);
-  console.log('[Kovan] Pinned at', hashKovan);
+  try {
+    console.log('[Kovan] Subgraph request');
+    const poolsKovan = await subgraphRequest(subgraphUrlKovan, query);
+    console.log('[Kovan] Pin on IPFS', poolsKovan.pools.length);
+    const hashKovan = await ipfsPin(keyKovan, poolsKovan);
+    console.log('[Kovan] Pinned at', hashKovan);
+  } catch (e) {
+    console.error('[Kovan] Update failed', e);
+  }
 
   await sleep(interval);
   updatePoolsInterval();
