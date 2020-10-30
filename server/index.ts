@@ -22,6 +22,7 @@ const query = {
     totalWeight: true,
     tokens: {
       address: true,
+      balance: true,
       decimals: true,
       denormWeight: true
     },
