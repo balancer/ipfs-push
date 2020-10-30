@@ -2,6 +2,7 @@ import { subgraphRequest, ipfsPin, sleep } from './utils';
 
 const subgraphUrl = process.env.SUBGRAPH_URL || 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-beta';
 const key = 'balancer-exchange/pools';
+// https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools
 const interval = 10e4;
 
 const query = {
