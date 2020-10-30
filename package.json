@@ -1,0 +1,27 @@
+{
+  "name": "ipfs-push",
+  "version": "0.1.2",
+  "repository": "balancer-labs/ipfs-push",
+  "license": "MIT",
+  "scripts": {
+    "express": "vue-cli-service express:watch",
+    "express:run": "vue-cli-service express:run",
+    "start": "vue-cli-service express:run"
+  },
+  "dependencies": {
+    "@fleekhq/fleek-storage-js": "^1.0.2",
+    "@snapshot-labs/snapshot.js": "github:snapshot-labs/snapshot.js#master",
+    "@vue/cli-plugin-typescript": "^4.4.0",
+    "@vue/cli-service": "^4.4.0",
+    "bluebird": "^3.7.2",
+    "json-to-graphql-query": "^2.0.0",
+    "node-fetch": "^2.6.1",
+    "require-context": "^1.1.0",
+    "typescript": "^3.9.7",
+    "vue-cli-plugin-express": "^1.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.6",
+    "prettier": "^1.19.1"
+  }
+}
