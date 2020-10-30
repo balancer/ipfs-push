@@ -5,7 +5,6 @@ interval = parseInt(interval);
 
 const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-beta';
 const subgraphUrlKovan = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-kovan';
-
 const key = 'balancer-exchange/pools'; // https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools
 const keyKovan = 'balancer-exchange-kovan/pools'; // https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange-kovan/pools
 
@@ -33,24 +32,24 @@ const query = {
 async function updatePoolsInterval() {
   // Publish for homestead
   try {
-    console.log('Subgraph request');
+    console.log('homestead: Subgraph request');
     const pools = await subgraphRequest(subgraphUrl, query);
-    console.log('Pin on IPFS', pools.pools.length);
+    console.log('homestead: Pin on IPFS', pools.pools.length);
     const hash = await ipfsPin(key, pools);
-    console.log('Pinned at', hash);
+    console.log('homestead: Pinned at', hash);
   } catch (e) {
-    console.error('Update failed', e);
+    console.error('homestead: Update failed', e);
   }
 
   // Publish for kovan
   try {
-    console.log('[Kovan] Subgraph request');
+    console.log('kovan: Subgraph request');
     const poolsKovan = await subgraphRequest(subgraphUrlKovan, query);
-    console.log('[Kovan] Pin on IPFS', poolsKovan.pools.length);
+    console.log('kovan: Pin on IPFS', poolsKovan.pools.length);
     const hashKovan = await ipfsPin(keyKovan, poolsKovan);
-    console.log('[Kovan] Pinned at', hashKovan);
+    console.log('kovan: Pinned at', hashKovan);
   } catch (e) {
-    console.error('[Kovan] Update failed', e);
+    console.error('kovan: Update failed', e);
   }
 
   await sleep(interval);
