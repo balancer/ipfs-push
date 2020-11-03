@@ -9,24 +9,46 @@ const key = 'balancer-exchange/pools'; // https://cloudflare-ipfs.com/ipns/balan
 const keyKovan = 'balancer-exchange-kovan/pools'; // https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange-kovan/pools
 
 const query = {
-  pools: {
-    __args: {
-      first: 1000,
-      where: {
-        publicSwap: true,
-        active: true
-      }
-    },
-    id: true,
-    swapFee: true,
-    totalWeight: true,
-    tokens: {
-      address: true,
-      balance: true,
-      decimals: true,
-      denormWeight: true
-    },
-    tokensList: true
+  poolsFirst: {
+      __aliasFor: 'pools',
+      __args: {
+        first: 1000,
+        where: {
+          publicSwap: true,
+          active: true
+        }
+      },
+      id: true,
+      swapFee: true,
+      totalWeight: true,
+      tokens: {
+        address: true,
+        balance: true,
+        decimals: true,
+        denormWeight: true
+      },
+      tokensList: true
+  },
+  poolsSecond: {
+      __aliasFor: 'pools',
+      __args: {
+        first: 1000,
+        skip: 1000,
+        where: {
+          publicSwap: true,
+          active: true
+        }
+      },
+      id: true,
+      swapFee: true,
+      totalWeight: true,
+      tokens: {
+        address: true,
+        balance: true,
+        decimals: true,
+        denormWeight: true
+      },
+      tokensList: true
   }
 }
 
