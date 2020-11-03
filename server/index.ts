@@ -15,7 +15,8 @@ const query = {
         first: 1000,
         where: {
           publicSwap: true,
-          active: true
+          active: true,
+          tokensCount_gt: 1
         }
       },
       id: true,
@@ -36,7 +37,8 @@ const query = {
         skip: 1000,
         where: {
           publicSwap: true,
-          active: true
+          active: true,
+          tokensCount_gt: 1
         }
       },
       id: true,
