@@ -1,7 +1,7 @@
 import { ipfsPin, sleep } from './utils';
 import * as scriptPools from './scripts/pools';
 import * as scriptPoolsKovan from './scripts/pools-kovan';
-import * as scriptExplore from './scripts/tokenlist-explore';
+import * as scriptExplore from './scripts/explore';
 
 const scripts = [scriptPoolsKovan, scriptPools, scriptExplore];
 

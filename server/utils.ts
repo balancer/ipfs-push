@@ -30,7 +30,7 @@ export async function subgraphRequest(url, query) {
     body: JSON.stringify({ query: jsonToGraphQLQuery({ query }) })
   });
   const { data } = await res.json();
-  return { pools: data.poolsFirst.concat(data.poolsSecond) };
+  return data || {};
 }
 
 export function ipfsGet(gateway, ipfsHash, protocolType = 'ipfs') {

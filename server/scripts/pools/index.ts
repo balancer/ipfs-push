@@ -5,12 +5,12 @@ const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balan
 export const key = 'balancer-exchange/pools';
 // https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools
 
-export const query = Object.fromEntries(['poolsFirst', 'poolsSecond'].map(q => {
+export const query = Object.fromEntries(['_1', '_2'].map(q => {
   return [q, {
     __aliasFor: 'pools',
     __args: {
       first: 1000,
-      skip: q === 'poolsSecond' ? 1000 : 0,
+      skip: q === '_2' ? 1000 : 0,
       where: {
         publicSwap: true,
         active: true,
@@ -30,8 +30,7 @@ export const query = Object.fromEntries(['poolsFirst', 'poolsSecond'].map(q => {
   }]
 }));
 
-console.log(query);
-
 export async function run() {
-  return await subgraphRequest(subgraphUrl, query);
+  const result = await subgraphRequest(subgraphUrl, query);
+  return result._1.concat(result._2);
 }
