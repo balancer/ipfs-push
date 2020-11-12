@@ -32,5 +32,5 @@ export const query = Object.fromEntries(['_1', '_2'].map(q => {
 
 export async function run() {
   const result = await subgraphRequest(subgraphUrl, query);
-  return result._1.concat(result._2);
+  return { pools: result._1.concat(result._2) };
 }

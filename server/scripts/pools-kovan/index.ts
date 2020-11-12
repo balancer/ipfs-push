@@ -8,5 +8,5 @@ export const key = 'balancer-exchange-kovan/pools';
 
 export async function run() {
   const result = await subgraphRequest(subgraphUrl, query);
-  return result._1.concat(result._2);
+  return { pools: result._1.concat(result._2) };
 }
