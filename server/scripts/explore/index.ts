@@ -1,8 +1,8 @@
-import whitelist from '@balancer-labs/assets/lists/pools.json';
+import whitelist from '@balancer-labs/assets/data/pools.json';
 import { subgraphRequest } from '../../utils';
 
 const smartpools = Object.entries(whitelist)
-  .filter(([, metadata]) => metadata.is_visible)
+  .filter(([, metadata]) => metadata.is_visible && metadata.chainId === 1)
   .map(([address]) => address);
 
 const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-beta';

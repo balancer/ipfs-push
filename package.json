@@ -9,7 +9,7 @@
     "start": "vue-cli-service express:run"
   },
   "dependencies": {
-    "@balancer-labs/assets": "github:balancer-labs/assets#fabien/pool-metadata",
+    "@balancer-labs/assets": "github:balancer-labs/assets#master",
     "@fleekhq/fleek-storage-js": "^1.0.2",
     "@snapshot-labs/snapshot.js": "github:snapshot-labs/snapshot.js#master",
     "@vue/cli-plugin-typescript": "^4.4.0",
