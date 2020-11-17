@@ -2,8 +2,9 @@ import { ipfsPin, sleep } from './utils';
 import * as scriptPools from './scripts/pools';
 import * as scriptPoolsKovan from './scripts/pools-kovan';
 import * as scriptExplore from './scripts/explore';
+import * as scriptExploreKovan from './scripts/explore-kovan';
 
-const scripts = [scriptPoolsKovan, scriptPools, scriptExplore];
+const scripts = [scriptPoolsKovan, scriptPools, scriptExploreKovan, scriptExplore];
 
 let interval = process.env.INTERVAL || 60e4;
 interval = parseInt(interval);
