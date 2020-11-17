@@ -1,4 +1,9 @@
-import { subgraphRequest } from "../../utils";
+import whitelist from '@balancer-labs/assets/lists/pools.json';
+import { subgraphRequest } from '../../utils';
+
+const smartpools = Object.entries(whitelist)
+  .filter(([, metadata]) => metadata.is_visible)
+  .map(([address]) => address);
 
 const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-beta';
 
@@ -50,7 +55,8 @@ function getTags(pool) {
 
   if (!pool.finalized && !pool.crp) tags.push('private');
 
-  if (pool.crp) tags.push('smart-pool');
+  if (pool.crp || smartpools.includes(pool.id))
+    tags.push('smart-pool');
 
   return tags;
 }
