@@ -53,10 +53,10 @@ function getTags(pool) {
   });
   if (isStablecoin) tags.push('stablecoin');
 
-  if (!pool.finalized && !pool.crp) tags.push('private');
+  const isCrp = pool.crp || smartpools.includes(pool.id);
+  if (!pool.finalized && !isCrp) tags.push('private');
 
-  if (pool.crp || smartpools.includes(pool.id))
-    tags.push('smart-pool');
+  if (isCrp) tags.push('smart-pool');
 
   return tags;
 }
