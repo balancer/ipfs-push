@@ -31,20 +31,24 @@ export async function run() {
   query.pools.swaps.__args['where'] = { timestamp_lt: tsYesterday };
   const result = await subgraphRequest(subgraphUrl, query);
 
-  const pools = result.pools.map(pool => {
-    const liquidity = parseFloat(pool.liquidity);
-    const poolTotalSwapVolume =
-      pool.swaps && pool.swaps[0] && pool.swaps[0].poolTotalSwapVolume
-        ? parseFloat(pool.swaps[0].poolTotalSwapVolume)
-        : 0;
-    const volume = parseFloat(pool.totalSwapVolume) - poolTotalSwapVolume;
-    return {
-      id: pool.id,
-      tokens: pool.tokensList,
-      liquidity,
-      volume
-    };
-  })
+  const pools = Object.fromEntries(
+    result.pools.map(pool => {
+      const liquidity = parseFloat(pool.liquidity);
+      const poolTotalSwapVolume =
+        pool.swaps && pool.swaps[0] && pool.swaps[0].poolTotalSwapVolume
+          ? parseFloat(pool.swaps[0].poolTotalSwapVolume)
+          : 0;
+      const volume = parseFloat(pool.totalSwapVolume) - poolTotalSwapVolume;
+      return [
+        pool.id,
+        {
+          tokens: pool.tokensList,
+          liquidity,
+          volume
+        }
+      ];
+    })
+  );
 
   return { last_update: ts, pools };
 }
