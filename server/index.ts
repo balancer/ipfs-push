@@ -1,9 +1,9 @@
 import { ipfsPin, sleep } from './utils';
 import * as scriptPools from './scripts/pools';
 import * as scriptPoolsKovan from './scripts/pools-kovan';
-import * as scriptExplore from './scripts/explore';
+import * as scriptBalancerKovanV2 from './scripts/balancer-kovan-v2';
 
-const scripts = [scriptPoolsKovan, scriptPools, scriptExplore];
+const scripts = [scriptPoolsKovan, scriptPools, scriptBalancerKovanV2];
 
 let interval = process.env.INTERVAL || 60e4;
 interval = parseInt(interval);
