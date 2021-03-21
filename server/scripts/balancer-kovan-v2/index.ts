@@ -19,8 +19,7 @@ const query = {
         first: 1,
         orderBy: 'timestamp',
         orderDirection: 'desc'
-      },
-      poolTotalSwapVolume: true
+      }
     }
   }
 };
