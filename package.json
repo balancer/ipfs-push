@@ -14,8 +14,6 @@
     "@vue/cli-plugin-typescript": "^4.4.0",
     "@vue/cli-service": "^4.4.0",
     "bluebird": "^3.7.2",
-    "is-core-module": "^2.2.0",
-    "json-parse-even-better-errors": "^2.3.1",
     "json-to-graphql-query": "^2.0.0",
     "node-fetch": "^2.6.1",
     "require-context": "^1.1.0",
