@@ -5,7 +5,7 @@ import { jsonToGraphQLQuery } from "json-to-graphql-query";
 const config: any = {
   apiKey: process.env.FLEEK_API_KEY,
   apiSecret: process.env.FLEEK_API_SECRET,
-  bucket: 'balancer-team-bucket'
+  bucket: 'balancer-bucket'
 };
 
 export const ipfsNode = process.env.IPFS_NODE || 'cloudflare-ipfs.com';
