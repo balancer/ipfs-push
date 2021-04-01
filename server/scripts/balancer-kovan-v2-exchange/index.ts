@@ -4,7 +4,7 @@ import { subgraphRequest } from '../../utils';
 const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/destiner/balancer-kovan-v2';
 
 export const key = 'balancer-kovan-v2/exchange';
-// https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-kovan-v2/pools
+// https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-kovan-v2/exchange
 
 export const query = Object.fromEntries(['_1', '_2'].map(q => {
   return [q, {
