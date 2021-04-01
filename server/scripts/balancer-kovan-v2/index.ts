@@ -1,6 +1,7 @@
 import { subgraphRequest } from '../../utils';
 
-const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-kovan-v2';
+// const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-kovan-v2'; // TO DO - Currently using destiners SG
+const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/destiner/balancer-kovan-v2';
 
 export const key = 'balancer-kovan-v2/pools';
 // https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-kovan-v2/pools
@@ -11,7 +12,7 @@ const query = {
       first: 1000
     },
     id: true,
-    liquidity: true,
+    totalLiquidity: true,
     tokensList: true,
     totalSwapVolume: true,
     swaps: {
@@ -32,7 +33,7 @@ export async function run() {
 
   const pools = Object.fromEntries(
     result.pools.map(pool => {
-      const liquidity = parseFloat(pool.liquidity);
+      const liquidity = parseFloat(pool.totalLiquidity);
       const poolTotalSwapVolume =
         pool.swaps && pool.swaps[0] && pool.swaps[0].poolTotalSwapVolume
           ? parseFloat(pool.swaps[0].poolTotalSwapVolume)
