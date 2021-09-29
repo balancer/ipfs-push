@@ -1,6 +1,6 @@
 import { subgraphRequest } from '../../utils';
 
-const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-beta';
+const subgraphUrl = 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer';
 
 export const key = 'balancer-exchange/pools';
 // https://cloudflare-ipfs.com/ipns/balancer-team-bucket.storage.fleek.co/balancer-exchange/pools
